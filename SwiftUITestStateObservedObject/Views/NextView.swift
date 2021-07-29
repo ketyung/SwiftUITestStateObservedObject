@@ -121,6 +121,8 @@ extension NextView {
     private func placeHolderView() -> some View {
         
         Text("Loading...")
+        .frame(width:UIScreen.main.bounds.width - 20, height : 200)
+       
     }
     
     
