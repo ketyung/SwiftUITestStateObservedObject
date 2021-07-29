@@ -18,33 +18,47 @@ struct Info2View : View {
     
     var body : some View {
         
-        VStack(spacing:20) {
         
-            Text("Info 2 @StateObject Counter is : \(infoViewModel.counter)")
+        NavigationView {
+        
+            VStack(spacing:20) {
             
-            
-            Button(action: {
+                Text("Info 2 @StateObject Counter is : \(infoViewModel.counter)")
                 
-                withAnimation{
+                
+                Button(action: {
                     
-                    infoViewModel.increment()
-                }
-            }){
-                
-                Text("Increment")
-            }
-            
-            Button(action: {
-                
-                withAnimation{
+                    withAnimation{
+                        
+                        infoViewModel.increment()
+                    }
+                }){
                     
-                    viewType = .none
+                    Text("Increment")
                 }
-            }){
                 
-                Text("Close Me")
+                
+                NavigationLink( destination: NextView(infoViewModel: infoViewModel)){
+                    
+                    Text("Go to Next View")
+                    
+                }
+          
+                Button(action: {
+                    
+                    withAnimation{
+                        
+                        viewType = .none
+                    }
+                }){
+                    
+                    Text("Close Me")
+                }
+          
             }
+            .navigationBarHidden(true)
         }
+        
         
     }
 }

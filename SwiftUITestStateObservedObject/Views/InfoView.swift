@@ -17,36 +17,51 @@ struct InfoView : View {
     
     var body : some View {
         
-        VStack(spacing:30) {
-        
-            Text("Info View @ObservedObject Counter is : \(infoViewModel.counter)")
-            .onAppear{
-                
-                infoViewModel.increment()
-            }
+        NavigationView {
+       
+            VStack(spacing:30) {
             
-            Button(action: {
-                
-                withAnimation{
+                Text("Info View @ObservedObject Counter is : \(infoViewModel.counter)")
+                .onAppear{
                     
                     infoViewModel.increment()
                 }
-            }){
                 
-                Text("Increment")
-            }
-            
-            Button(action: {
-                
-                withAnimation{
+                Button(action: {
                     
-                    viewType = .none
+                    withAnimation{
+                        
+                        infoViewModel.increment()
+                    }
+                }){
+                    
+                    Text("Increment")
                 }
-            }){
                 
-                Text("Close Me")
+                
+                
+                NavigationLink( destination: NextView(infoViewModel: infoViewModel)){
+                    
+                    Text("Go to Next View")
+                    
+                }
+               
+                Button(action: {
+                    
+                    withAnimation{
+                        
+                        viewType = .none
+                    }
+                }){
+                    
+                    Text("Close Me")
+                }
+                
+               
             }
+            .navigationBarHidden(true)
         }
+        
         
     }
 }
