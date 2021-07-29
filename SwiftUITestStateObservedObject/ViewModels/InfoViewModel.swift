@@ -12,6 +12,11 @@ class InfoViewModel : ObservableObject {
     
     @Published var counter : Int = 0
     
+    @Published var firstName : String = ""
+    
+    @Published var lastName : String = ""
+    
+    
     
     deinit {
         
